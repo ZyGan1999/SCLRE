@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" class="gr__shape2prog_csail_mit_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 
               <meta name="viewport" content="width=device-width, initial-scale=1">    <link rel="shortcut icon" href="http://shape2prog.csail.mit.edu/images/favicon.ico">
-        <meta name="description" content="Counterfactual Data-Augmented Sequential Recommendation">
-        <meta name="keywords" content="Counterfactual Data-Augmented, Sequential Recommendation">
+        <meta name="description" content="Superclass Learning with Representation Enhancement">
+        <meta name="keywords" content="Superclass Learning with Representation Enhancement">
 
-        <title>Sequential Recommendation</title>
+        <title>Superclass Learning with Representation Enhancement</title>
         <link rel="stylesheet" href="asset/font.css">
         <link rel="stylesheet" href="asset/main.css">
 
@@ -17,12 +17,12 @@
             <div class="container">
 
                 <div class="content project_title">
-                    <h1>Counterfactual Data-Augmented Sequential Recommendation</h1>
+                    <h1>Superclass Learning with Representation Enhancement</h1>
                 </div>
 
                 <div class="content project_headline">
                     <center><h2>
-                      <font size="3">Anonymous Author</font>&nbsp;&nbsp;
+                      <font size="3">Zeyu Gan, Suyun Zhao, Jinlong Kang, Liyuan Shang, Hong Chen, Cuiping Li</font>&nbsp;&nbsp;
                    
                 </div>
 
@@ -32,49 +32,65 @@
 
                 <div class="content">
                     <div class="text">
-                        <h1>1. Abstract</h1>
-                        <p><font size=3>Sequential recommendation aims at predicting users' preferences
-based on their historical behaviors. However, this recommendation
-strategy may not perform well in practice due to the sparsity of
-the real-world data. In this paper, we propose a novel counterfactual data augmentation framework to mitigate the impact of the
-imperfect training data and empower sequential recommendation
-models. Our framework is composed of a sampler model and an
-anchor model. The sampler model aims to generate new user behavior sequences based on the observed ones, while the anchor
-model is leveraged to provide the final recommendation list, which
-is trained based on both observed and generated sequences. We
-design the sampler model to answer the key counterfactual question: "what would a user like to buy if her previously purchased
-items had been different?". Beyond heuristic intervention methods, we leverage two learning-based methods to implement the
-sampler model, and thus, improve the quality of the generated sequences when training the anchor model. Additionally, we analyze
-the influence of the generated sequences on the anchor model in
-theory and achieve a trade-off between the information and the
-noise introduced by the generated sequences. Experiments on nine
-real-world datasets demonstrate our framework's effectiveness and
-generality.</font></p>
+                        <h1>Abstract</h1>
+                        <p><font size=3>In many real scenarios, data are often divided into a handful of artificial super 
+                            categories in terms of expert knowledge rather than the representations of images. Concretely, 
+                            a superclass may contain massive and various raw categories, such as refuse sorting. Due to the 
+                            lack of common semantic features, the existing classification techniques are intractable to recognize 
+                            superclass without raw class labels, thus they suffer severe performance damage or require huge annotation costs. 
+                            To narrow this gap, this paper proposes a superclass learning framework, called SuperClass Learning with Representation 
+                            Enhancement(SCLRE), to recognize super categories by leveraging enhanced representation. Specifically, by exploiting 
+                            the self-attention technique across the batch, SCLRE collapses the boundaries of those raw categories and enhances the 
+                            representation of each superclass. On the enhanced representation space, a superclass-aware decision boundary is then reconstructed. 
+                            Theoretically, we prove that by leveraging attention techniques the generalization error of SCLRE can be bounded under superclass scenarios. 
+                            Experimentally, extensive results demonstrate that SCLRE outperforms the baseline and other contrastive-based methods on CIFAR-100 datasets 
+                            and four high-resolution datasets.</font></p>
                     </div>
                 </div>
 
                 <div class="content">
                     <div class="text">
-                        <h1>2. Illustration of Our Framework</h1>
+                        <h1>1. Introduction & Motivation</h1>
                         <div class="content project_headline">
                         <div class="img" style="text-align:center">
                             <img class="img_responsive" src="asset/intro.png" alt="Intro" style="margin:auto;max-width:80%">
                         </div>
                         <div class="text">
-                            <p><font size=3>Figure 1: An illustration of our framework for counterfactual data-augmented sequential recommendation and 
-							the sampler models.</font></p>
+                            <p><font size=3>Figure 1: An illustration of superclass problem.</font></p>
                         </div>
-						<div class="content">
-						<h3>Contributions</h3>
-                            <p><ul class="download">
+                        <div class="text">
+                        In real-world applications, the criteria for image classification are often determined by human cognition rather than the 
+                        features of the images themselves. In some scenarios, due to overly coarse-grained criteria, a category of images may contain 
+                        various subclasses, resulting in a lack of common semantic features even among images belonging to the same class. For example, 
+                        in the context of waste classification, images of recyclable waste include a wide range of items, from beverage cans to books, 
+                        with no apparent commonality. This article defines this phenomenon as the "Superclass Learning" problem.
+                        </div>
+                        <div class="content">
+                        
+                        <h3>Characteristics of Superclass Learning</h3>
+                        <p><ul class="download">
 							<font size=3>
-                            <li>We propose a novel framework to empower sequential recommendation models with counterfactual data.</li>
-							<li>We implement the above idea in three ways, developing a
-heuristic and two learning-based samplers to generate counterfactual sequences.</li>
-							<li>We theoretically analyze the noisy information in the counterfactual data and propose a simple but effective strategy to ensure
-the informativeness of the generated sequences..</li>
-                            <li>We conduct extensive experiments based on nine real-world
-datasets to verify our framework's effectiveness and generality.</li>
+                            <li>Subclasses within a superclass are usually scattered and share few common features.</li>
+							<li>Instances from different superclasses may have common features, leading to potential confusion between classes.</li>
+                            </font>
+                        </ul></p>
+
+                        <h3>Challenges of Superclass Learning</h3>
+                        <p><ul class="download">
+							<font size=3>
+                            <li><b>Breaking the original basic class decision boundaries</b>(Fig 1.b): It is necessary to divide the domain into smaller, more meaningful domains that better represent the actual problem (e.g., splitting the apple domain into fruit and toy domains).</li>
+							<li><b>Reconstructing decision boundaries at the superclass level</b>(Fig 1.c): The goal is to merge relevant class domains into a new superclass domain that accurately represents the intended classification (e.g., combining fruit apples, eggs, and bones into a food waste superclass domain).</li>
+                            </font>
+                        </ul></p>
+                        </div>
+
+                        <div class="content">
+                            <h3>Contribution of this paper</h3>
+                        <p><ul class="download">
+							<font size=3>
+                            <li>We propose the under-study but realistic problem, superclass learning.</li>
+							<li>We propose a novel representation enhancement method (SCLRE) to address superclass learning.</li>
+                            <li> We perform extensive experiments to demonstrate that SCLRE outperforms other SOTA classification techniques.</li>
                             </font>
                         </ul></p>
                         </div>
@@ -83,15 +99,46 @@ datasets to verify our framework's effectiveness and generality.</li>
                 </div>
                 <div class="content">
                     <div class="text">
-                        <h1>3. Main Results</h1>
+                        <h1>2. Framework of SCLRE</h1>
                     </div>
 
                     <div class="content project_headline">
-					<div class="text">
-                            <p><font size=3>Table 1: Overall comparison between the baselines and our models.</font></p>
-                        </div>
+					
                         <div class="img" style="text-align:center">
-                            <img class="img_responsive" src="asset/result.png" alt="result" style="margin:auto;max-width:90%">
+                            <img class="img_responsive" src="asset/model.png" alt="result" style="margin:auto;max-width:90%">
+                        </div>
+                        <div class="text">
+                            <p><font size=3>Figure 2: Overview of the process of SCLRE.</font></p>
+                        </div>
+                        <div class="text">
+                            SCLRE process the images in the following steps. The images first generate their representations 
+                            through a convolutional neural network, then mix with each other in a trainable cross-instance 
+                            attention module for enhancement. After enhancement, the representations are then adjusted according 
+                            to their superclass labels and the target anchors.
+                        </div>
+
+                        <div class="content">
+                            <h3>Enhancement</h3>
+                        <p><ul class="download">
+							<font size=3>
+                            <li>We calculate the attention weights by putting the batch images into a cross-instance attention module.</li>
+							<li>We use the attention weights to mix the representations with each other.</li>
+                            </font>
+                        </ul></p>
+                        </div>
+
+                        <div class="content">
+                            <h3>Adjustment</h3>
+                        <p><ul class="download">
+							<font size=3>
+                            <li>We adjust the enhanced representations under the guidance of a supervised contrastive loss.</li>
+							<li>We also preset target anchors for each superclass to help the adjustment process.</li>
+                            </font>
+                        </ul></p>
+                        </div>
+
+                        <div class="text">
+                            More details about the enhancement and adjustment process are shown in our paper (Sec.3).
                         </div>
                         
                     </div>
@@ -99,35 +146,38 @@ datasets to verify our framework's effectiveness and generality.</li>
                 </div>
 				<div class="content">
                     <div class="text">
-                        <h1>4. Code and Datasets</h1>
+                        <h1>3. Experiment Result</h1>
 
-						<h2> 4.1 Code <a href="https://drive.google.com/drive/folders/1QfHFYgKeVitJKH7HWsIL4RjZZbAeI?usp=sharing">[link:Google Driver]</font></a></h2>
+						<h2> 3.1 Accuracy </h2>
 						
 						<div class="content project_headline">
 						<div class="text">
-                            <p><font size=3>Table 2: Structure of the code files [main program].</font></p>
+                            <p><font size=3>Table 1&2: Accuracy on Multiple Datasets.</font></p>
                         </div>
 						<div class="img" style="text-align:center">
-                            <img class="img_responsive" src="asset/code1.png" alt="result" style="margin:auto;max-width:90%">
+                            <img class="img_responsive" src="asset/accuracy.png" alt="result" style="margin:auto;max-width:90%">
                         </div>
+                        <div class="text">
+                            We reorganize the raw classes of these datasets and make them superclass problems. The classification 
+                            results show that SCLRE outperforms the SOTA representation learning framework.
+                        </div>
+
+                        <h2> 3.2 Visualization </h2>
 					
                         <div class="img" style="text-align:center">
-						<div class="text">
-                            <p><font size=3>Table 3: Structure of the code files [utils].</font></p>
+                            <img class="img_responsive" src="asset/visualization.png" alt="result" style="margin:auto;max-width:90%">
+                            <div class="text">
+                                <p><font size=3>Figure 3: Visualization of Representation Space.</font></p>
+                            </div>
                         </div>
-                            <img class="img_responsive" src="asset/code2.png" alt="result" style="margin:auto;max-width:90%">
-                        </div>
-                        
-                        </div>
-                        <h2>4.2 Datasets <a href="https://drive.google.com/drive/folders/1yoH_YI4o5knC8hxlhorvl_NIrCiU?usp=sharing">[link:Google Driver]</a></font></h2>
-						<div class="content project_headline">
-						<div class="text">
-                            <p><font size=3>Table 4: Statistics of the datasets used in our experiments.</font></p>
-                        </div>
-                        <div class="img" style="text-align:center">
-                            <img class="img_responsive" src="asset/data.png" alt="result" style="margin:auto;max-width:90%">
+
+                        <div class="text">
+                            We use t-SNE to visualize the representation space of each compared mathod. The result shows that SCLRE can 
+                            effectively scratch superclass-aware representations and make the boundaries of each superclass more clear.
                         </div>
                         
+                        </div class="text">
+                            More experiment results like ablation, sensetivity and robustness are shown in our paper.
                         </div>
                     </div>
                 </div>
@@ -135,64 +185,42 @@ datasets to verify our framework's effectiveness and generality.</li>
 
                 <div class="content">
                     <div class="text">
-                        <h1>5. Usage</h1>
-						<p> <font size=4>5.1. Download the code</font></p>
-						<p> <font size=4>5.2. Download the dataset, and put it into dataset/dataset name/ folder.</font></p>
-						<p> <font size=4>5.3. Pre-train the sampler and anchor model.</font></p>
-						<font size=3>
-                        <p>Before you can run our program, you should run run_test_example.py or run_hyper.py to train Sampler model and Anchor model firstly. we provided source code for three models NARM, STAMP and SASRec.</p>
-                        <div class="img" style="text-align:center">
-                            <img class="img_responsive" src="asset/run1.png" alt="result" style="margin:auto;max-width:90%">
-                        </div>
-                        <p>We also provide automatic parameter tuning tools. In hyper.test file,setting up the range of tuning parameter such as:</p>
-						<div class="img" style="text-align:center">
-                            <img class="img_responsive" src="asset/run2.png" alt="result" style="margin:auto;max-width:90%">
-                        </div>
-						<p>then run run_hyper.py</p>
-                        <div class="img" style="text-align:center">
-                            <img class="img_responsive" src="asset/run3.png" alt="result" style="margin:auto;max-width:90%">
-                        </div>
-                        <p>you should also save the trained model named Model name-dataset name.pth,in which the model name is one of the three model NARM, STAMP and SASRec,and put it in the folder savedTrainer/. we have trained some model as examples which could be used to train our method directly.</p>
-						<p> <font size=4>5.4. Run our framework</font></p>
-						<p>Run main.py file to train our model. You can configure some training parameters through the command line</p>
-                        <div class="img" style="text-align:center">
-                            <img class="img_responsive" src="asset/run4.png" alt="result" style="margin:auto;max-width:90%">
-                        </div>
-						<p>where --learning denotes one of our methods 'Heuristic', 'Learning' and 'AD' representing heuristic, data-and model-oriented methods respectively. --sample denotes the number of sample,--kappa denotes the confidence parameter, --iter denotes the iteration number, --tao denotes the temperature parameter, --index denotes the intervention index from back to front, we remove the negative sign from the value 
-						for the facilitation of the experiment</p>
-						</font>
+                    <h1>4. Analysis of Generalization</h1>
+                    <div class="text">
+                    According to the theory of contrastive learning, we analyze the generalization upper bound of SCLRE.The details of the proof 
+                    are shown in the paper and appendix. To draw a conclusion, The generalization error can be bounded by the similarity of attention 
+                    vectors from the same superclass in the form of the following equation:
+                    </div>
+                    <div class="img" style="text-align:center">
+                        <img class="img_responsive" src="asset/error.png" alt="result" style="margin:auto;max-width:90%">
+                    </div>
+                    <div class="text">
+                        During the training process, for the samples of the same superclass under the same task, the SCLRE training process 
+                        can help to discover samples that are more important to the construction of the superclass structure, and they should 
+                        also be similar to the samples in the same superclass. Therefore, the sample pairs in O2 can naturally have high 
+                        similarity attention vectors, thereby reducing the upper bound of the generalization error, which is consistent with 
+                        the phenomenon we observed in the experiment.
+                    </div>
                     </div>
                 </div>
                
                 <div class="content">
                     <div class="text">
-                        <h1>6. Detailed parameter search ranges</h1>
+                        <h1>5. BibTex  </h1>
 						
-						<div class="img" style="text-align:center">
-                            <img class="img_responsive" src="asset/range.png" alt="result" style="margin:auto;max-width:90%">
+						<div class="content">
+                            @inproceedings{
+                                anonymous2023superclass,
+                                title={Superclass Learning with Representation Enhancement},
+                                author={Anonymous},
+                                booktitle={Conference on Computer Vision and Pattern Recognition 2023},
+                                year={2023},
+                                url={https://openreview.net/forum?id=LXsxxjV5iS}
+                                }
                         </div>
                     </div>
                 </div>
 
-
-                <div class="content">
-                    <div class="text">
-                        <h1>7. Runtime Environment</h1>
-						<ul class="download">
-						<font size=3>
-                            <li><p>System:Linux dell-PowerEdge-R730</p></li>
-							<li><p>CPU: Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz</p></li>
-							<li><p>CPU-Memory:25G</p></li>
-							<li><p>GPU:NVIDIA Corporation GV100 [TITAN V] (rev a1)</p></li>
-                            <li><p>GPU-Memory:12G</p></li>
-							<li><p>Pytorch: 1.7.0</p></li>
-							<li><p>CUDA:10.1</p></li>
-						</font>
-                        </ul>
-						
-                    </div>
-                </div>
-
-<div id="download_plus_animation"></div></body></html>
+</body></html>
 
 
