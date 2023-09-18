@@ -8,6 +8,23 @@
         <title>Superclass Learning with Representation Enhancement</title>
         <link rel="stylesheet" href="asset/font.css">
         <link rel="stylesheet" href="asset/main.css">
+        <style>
+            .abstract {
+              border: 1px solid black; /* 边框样式和颜色 */
+              padding: 10px; /* 可选：添加内边距以增加边框与内容之间的间距 */
+              border-radius: 10px; /* 10像素的圆角边框 */
+              background-color: #FEF9E7; /* 设置背景色为黄色 */
+              margin-bottom: 60px; /* 在章节底部添加60像素的外边距 */
+            }
+            .chapter {
+                border-radius: 10px;
+                padding: 10px;
+                background-color: #F6FEFF;
+                margin-bottom: 60px; /* 在章节底部添加60像素的外边距 */
+                box-shadow: 0 0 5px #2CACFF;
+
+            }
+          </style>
 
     </head>
 
@@ -22,7 +39,7 @@
 
                 <div class="content project_headline">
                     <center><h2>
-                      <font size="3">Zeyu Gan, Suyun Zhao, Jinlong Kang, Liyuan Shang, Hong Chen, Cuiping Li</font>&nbsp;&nbsp;
+                      <font size="3">Zeyu Gan, Suyun Zhao, Jinlong Kang, Hong Chen, Cuiping Li</font>&nbsp;&nbsp;
                    
                 </div>
 
@@ -30,7 +47,7 @@
                 
 
 
-                <div class="content">
+                <div class="abstract">
                     <div class="text">
                         <h1>Abstract</h1>
                         <p><font size=3>In many real scenarios, data are often divided into a handful of artificial super 
@@ -48,7 +65,7 @@
                     </div>
                 </div>
 
-                <div class="content">
+                <div class="chapter">
                     <div class="text">
                         <h1>1. Introduction & Motivation</h1>
                         <div class="content project_headline">
@@ -97,7 +114,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="content">
+                <div class="chapter">
                     <div class="text">
                         <h1>2. Framework of SCLRE</h1>
                     </div>
@@ -135,25 +152,19 @@
 							<li>We also preset target anchors for each superclass to help the adjustment process.</li>
                             </font>
                         </ul></p>
-                        </div>
-
-                        <div class="text">
-                            More details about the enhancement and adjustment process are shown in our paper (Sec.3).
+                        More details about the enhancement and adjustment process are shown in our paper (Sec.3).
                         </div>
                         
                     </div>
 					
                 </div>
-				<div class="content">
+				<div class="chapter">
                     <div class="text">
                         <h1>3. Experiment Result</h1>
 
 						<h2> 3.1 Accuracy </h2>
-						
-						<div class="content project_headline">
-						<div class="text">
-                            <p><font size=3>Table 1&2: Accuracy on Multiple Datasets.</font></p>
-                        </div>
+
+                        <p style="text-align: center;"><font size=3>Table 1&2: Accuracy on Multiple Datasets.</font></p>
 						<div class="img" style="text-align:center">
                             <img class="img_responsive" src="asset/accuracy.png" alt="result" style="margin:auto;max-width:90%">
                         </div>
@@ -164,36 +175,33 @@
 
                         <h2> 3.2 Visualization </h2>
 					
-                        <div class="img" style="text-align:center">
+                        <center>
                             <img class="img_responsive" src="asset/visualization.png" alt="result" style="margin:auto;max-width:90%">
                             <div class="text">
                                 <p><font size=3>Figure 3: Visualization of Representation Space.</font></p>
                             </div>
-                        </div>
+                        </center>
 
                         <div class="text">
                             We use t-SNE to visualize the representation space of each compared mathod. The result shows that SCLRE can 
-                            effectively scratch superclass-aware representations and make the boundaries of each superclass more clear.
-                        </div>
+                            effectively extract superclass-aware representations and make the boundaries of each superclass more clear.
                         
-                        </div class="text">
                             More experiment results like ablation, sensetivity and robustness are shown in our paper.
                         </div>
                     </div>
                 </div>
 
-
-                <div class="content">
+                <div class="chapter">
                     <div class="text">
                     <h1>4. Analysis of Generalization</h1>
-                    <div class="text">
                     According to the theory of contrastive learning, we analyze the generalization upper bound of SCLRE.The details of the proof 
                     are shown in the paper and appendix. To draw a conclusion, The generalization error can be bounded by the similarity of attention 
                     vectors from the same superclass in the form of the following equation:
                     </div>
-                    <div class="img" style="text-align:center">
-                        <img class="img_responsive" src="asset/error.png" alt="result" style="margin:auto;max-width:90%">
-                    </div>
+
+                    <center>
+                        <img class="img_responsive" src="asset/error.png" alt="result" style="margin:auto;max-width:50%">
+                    </center>
                     <div class="text">
                         During the training process, for the samples of the same superclass under the same task, the SCLRE training process 
                         can help to discover samples that are more important to the construction of the superclass structure, and they should 
@@ -201,24 +209,15 @@
                         similarity attention vectors, thereby reducing the upper bound of the generalization error, which is consistent with 
                         the phenomenon we observed in the experiment.
                     </div>
-                    </div>
                 </div>
+
                
-                <div class="content">
-                    <div class="text">
+                <div class="chapter">
                         <h1>5. BibTex  </h1>
-						
 						<div class="content">
-                            @InProceedings{Gan_2023_CVPR,
-    author    = {Gan, Zeyu and Zhao, Suyun and Kang, Jinlong and Shang, Liyuan and Chen, Hong and Li, Cuiping},
-    title     = {Superclass Learning With Representation Enhancement},
-    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-    month     = {June},
-    year      = {2023},
-    pages     = {24060-24069}
-}
+                            <b>Recommended citation:</b>
+                            Zeyu Gan, Suyun Zhao, Jinlong Kang, Liyuan Shang, Hong Chen, Cuiping Li; Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023, pp. 24060-24069
                         </div>
-                    </div>
                 </div>
 
 </body></html>
