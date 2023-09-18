@@ -34,6 +34,16 @@
                 font-size: 20px; /* 设置字体大小 */
                 margin-bottom: 60px; /* 在章节底部添加60像素的外边距 */
             }
+            .box {
+                border: 1px solid black; /* 边框样式和颜色 */
+                border-radius: 10px; /* 10像素的圆角边框 */
+                background-color: #FFF4F4; /* 设置背景色为黄色 */
+                text-align: left; /* 水平居中容器中的内容 */
+                margin-bottom: 30px; /* 在章节底部添加60像素的外边距 */
+            }
+            body {
+                font-family: Arial, sans-serif;
+            }
           </style>
 
     </head>
@@ -44,7 +54,7 @@
             <div class="container">
 
                 <div class="content project_title">
-                    <h1>Superclass Learning with Representation Enhancement</h1>
+                    <h1><font size=6>Superclass Learning with Representation Enhancement</font></h1>
                 </div>
 
                 <div class="authors">
@@ -92,19 +102,20 @@
                         features of the images themselves. In some scenarios, due to overly coarse-grained criteria, a category of images may contain 
                         various subclasses, resulting in a lack of common semantic features even among images belonging to the same class. For example, 
                         in the context of waste classification, images of recyclable waste include a wide range of items, from beverage cans to books, 
-                        with no apparent commonality. This article defines this phenomenon as the "Superclass Learning" problem.
+                        with no apparent commonality. This article defines this phenomenon as the <b>Superclass Learning</b> problem.<br><br>
                         </div>
-                        <div class="content">
-                        
-                        <h3>Characteristics of Superclass Learning</h3>
+                        <div class="box">
+                        <h3>&nbsp;Characteristics of Superclass Learning</h3>
                         <p><ul class="download">
 							<font size=3>
                             <li>Subclasses within a superclass are usually scattered and share few common features.</li>
 							<li>Instances from different superclasses may have common features, leading to potential confusion between classes.</li>
                             </font>
                         </ul></p>
+                        </div>
 
-                        <h3>Challenges of Superclass Learning</h3>
+                        <div class="box">
+                        <h3>&nbsp;Challenges of Superclass Learning</h3>
                         <p><ul class="download">
 							<font size=3>
                             <li><b>Breaking the original basic class decision boundaries</b>(Fig 1.b): It is necessary to divide the domain into smaller, more meaningful domains that better represent the actual problem (e.g., splitting the apple domain into fruit and toy domains).</li>
@@ -113,8 +124,8 @@
                         </ul></p>
                         </div>
 
-                        <div class="content">
-                            <h3>Contribution of this paper</h3>
+                        <div class="box">
+                            <h3>&nbsp;Contribution of this paper</h3>
                         <p><ul class="download">
 							<font size=3>
                             <li>We propose the under-study but realistic problem, superclass learning.</li>
@@ -224,13 +235,28 @@
                 </div>
 
                
-                <div class="chapter">
-                        <h1>5. BibTex  </h1>
-						<div class="content">
-                            <b>Recommended citation:</b>
-                            Zeyu Gan, Suyun Zhao, Jinlong Kang, Liyuan Shang, Hong Chen, Cuiping Li; Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023, pp. 24060-24069
-                        </div>
-                </div>
+                
+
+            <div class="chapter">
+                <h1>5. Extension to Semi-Supervised Learning</h1>
+                We further extend SCLRE to semi-supervised learning. By applying self-supervised pretraining and a strict threshold,
+                we get reliable new generated pseudo-labels. Then we use the pseudo-labels to train the model in a semi-supervised way. 
+                For convenience, we call this method SS-SCLRE. The experiment results show that SS-SCLRE can achieve better performance and alleviate performance decay.
+                <center>
+                    <img class="img_responsive" src="asset/semi_line.png" alt="result" style="margin:auto;max-width:80%">
+                    <p><font size=3>Figure 4: Visualization of Representation Space.</font></p>
+                </center>
+
+                The details of the extension are shown in the paper.
+            </div>
+
+
+
+            <div class="chapter">
+                <h1>5. BibTex  </h1>
+                    <b>Recommended citation</b>(for the conference version): <br>
+                    Zeyu Gan, Suyun Zhao, Jinlong Kang, Liyuan Shang, Hong Chen, Cuiping Li; Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2023, pp. 24060-24069
+        </div>
 
 </body></html>
 
