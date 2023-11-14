@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="urls">
-                    <a href="https://github.com/ZyGan1999/Superclass-Learning-with-Representation-Enhancement">Code</a> | <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Kang_Superclass_Learning_With_Representation_Enhancement_CVPR_2023_paper.pdf">Conference Paper</a>
+                    <a href="https://github.com/ZyGan1999/Superclass-Learning-with-Representation-Enhancement">Code</a> | <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Kang_Superclass_Learning_With_Representation_Enhancement_CVPR_2023_paper.pdf">Conference Edition</a>
                 </div>
 
 
@@ -72,18 +72,32 @@
                 <div class="abstract">
                     <div class="text">
                         <h1>Abstract</h1>
-                        <p><font size=3>In many real scenarios, data are often divided into a handful of artificial super 
-                            categories in terms of expert knowledge rather than the representations of images. Concretely, 
-                            a superclass may contain massive and various raw categories, such as refuse sorting. Due to the 
-                            lack of common semantic features, the existing classification techniques are intractable to recognize 
-                            superclass without raw class labels, thus they suffer severe performance damage or require huge annotation costs. 
-                            To narrow this gap, this paper proposes a superclass learning framework, called SuperClass Learning with Representation 
-                            Enhancement(SCLRE), to recognize super categories by leveraging enhanced representation. Specifically, by exploiting 
-                            the self-attention technique across the batch, SCLRE collapses the boundaries of those raw categories and enhances the 
-                            representation of each superclass. On the enhanced representation space, a superclass-aware decision boundary is then reconstructed. 
-                            Theoretically, we prove that by leveraging attention techniques the generalization error of SCLRE can be bounded under superclass scenarios. 
-                            Experimentally, extensive results demonstrate that SCLRE outperforms the baseline and other contrastive-based methods on CIFAR-100 datasets 
-                            and four high-resolution datasets.</font></p>
+                        <p><font size=3>
+                            In many real scenarios, data are often divided
+                            into a handful of artificial superclasses in terms of expert
+                            knowledge rather than the semantics of images. Concretely, a
+                            superclass may contain massive and various raw categories that
+                            do not share obvious image semantics, such as refuse sorting.
+                            Due to the lack of common semantic features, the existing
+                            instance-level techniques are intractable to extract superclass-aware
+                            representations and fail in superclass scenarios. To narrow
+                            this gap, this paper first conducts extensive analysis to reveal the
+                            limitation of instance-level representation, and then proposes a
+                            superclass-specific learning framework, called <b>S</b>uper<b>C</b>lass <b>L</b>earning 
+                            with <b>R</b>epresentation <b>E</b>nhancement(SCLRE), to recognize
+                            superclasses by leveraging enhanced representation. Specifically,
+                            by exploiting the self-attention technique across the instances,
+                            SCLRE collapses the boundaries of those raw categories and
+                            enhances the representation of each superclass. On the enhanced
+                            representation space, a superclass-aware decision boundary is
+                            then reconstructed. Theoretically, we prove that by leveraging
+                            attention techniques the generalization error of SCLRE can be
+                            bounded under superclass scenarios. Experimentally, extensive
+                            results demonstrate that SCLRE outperforms the baseline and
+                            other contrastive-based methods on CIFAR-100 datasets and
+                            four high-resolution datasets in supervised situations, and we
+                            further verify that SCLRE can also be easily extended to
+                            semi-supervised situation.</font></p>
                     </div>
                 </div>
 
@@ -244,7 +258,7 @@
                 For convenience, we call this method SS-SCLRE. The experiment results show that SS-SCLRE can achieve better performance and alleviate performance decay.
                 <center>
                     <img class="img_responsive" src="asset/semi_line.png" alt="result" style="margin:auto;max-width:80%">
-                    <p><font size=3>Figure 4: Visualization of Representation Space.</font></p>
+                    <p><font size=3>Figure 4: Results about the Semi-Supervised Extension.</font></p>
                 </center>
 
                 The details of the extension are shown in the paper.
