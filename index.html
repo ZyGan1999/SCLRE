@@ -54,7 +54,7 @@
             <div class="container">
 
                 <div class="content project_title">
-                    <h1><font size=6>Superclass Learning with Representation Enhancement</font></h1>
+                    <h1><font size=6>Learn Superclass Representation via Semantic Reconstruction</font></h1>
                 </div>
 
                 <div class="authors">
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="urls">
-                    <a href="https://github.com/ZyGan1999/Superclass-Learning-with-Representation-Enhancement">Code</a> | <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Kang_Superclass_Learning_With_Representation_Enhancement_CVPR_2023_paper.pdf">Conference Paper</a>
+                    <a href="https://github.com/ZyGan1999/Superclass-Learning-with-Representation-Enhancement">Code</a> | <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Kang_Superclass_Learning_With_Representation_Enhancement_CVPR_2023_paper.pdf">Conference Version</a>
                 </div>
 
 
@@ -72,19 +72,13 @@
                 <div class="abstract">
                     <div class="text">
                         <h1>Abstract</h1>
-                        <p><font size=3>In many real scenarios, data are often divided into a handful of artificial super 
-                            categories in terms of expert knowledge rather than the representations of images. Concretely, 
-                            a superclass may contain massive and various raw categories, such as refuse sorting. Due to the 
-                            lack of common semantic features, the existing classification techniques are intractable to recognize 
-                            superclass without raw class labels, thus they suffer severe performance damage or require huge annotation costs. 
-                            To narrow this gap, this paper proposes a superclass learning framework, called SuperClass Learning with Representation 
-                            Enhancement(SCLRE), to recognize super categories by leveraging enhanced representation. Specifically, by exploiting 
-                            the self-attention technique across the batch, SCLRE collapses the boundaries of those raw categories and enhances the 
-                            representation of each superclass. On the enhanced representation space, a superclass-aware decision boundary is then reconstructed. 
-                            Theoretically, we prove that by leveraging attention techniques the generalization error of SCLRE can be bounded under superclass scenarios. 
-                            Experimentally, extensive results demonstrate that SCLRE outperforms the baseline and other contrastive-based methods on CIFAR-100 datasets 
-                            and four high-resolution datasets. Furthermore, we conduct an extensive analysis of the isotropy of instance-level representation and then 
-                            extend SCLRE into semi-supervised situations.</font></p>
+                        <p><font size=3>
+                            This study explores the image representation learning problems with super coarse-grained annotations, i.e., superclass learning. 
+                            A novel learning framework, SCLRE, is then proposed, which contributes to extracting superclass-aware representations by 
+                            leveraging self-attention techniques across the instances and reconstructing the semantics. By theoretical analysis, we reveal 
+                            that a well-aligned representation space is essential for superclass learning and the generalization error of SCLRE can be bounded 
+                            by attention constraints. By empirical validation, extensive experiments verify that SCLRE outperforms the baseline and other 
+                            contrastive-based methods on CIFAR-100 datasets and four high-resolution datasets.</font></p>
                     </div>
                 </div>
 
@@ -153,7 +147,7 @@
                             <p><font size=3>Figure 2: Overview of the process of SCLRE.</font></p>
                         </div>
                         <div class="text">
-                            SCLRE process the images in the following steps. The images first generate their representations 
+                            SCLRE processes the images in the following steps. The images first generate their representations 
                             through a convolutional neural network, then mix with each other in a trainable cross-instance 
                             attention module for enhancement. After enhancement, the representations are then adjusted according 
                             to their superclass labels and the target anchors.
@@ -208,10 +202,10 @@
                         </center>
 
                         <div class="text">
-                            We use t-SNE to visualize the representation space of each compared mathod. The result shows that SCLRE can 
+                            We use t-SNE to visualize the representation space of each compared method. The result shows that SCLRE can 
                             effectively extract superclass-aware representations and make the boundaries of each superclass more clear.
                         
-                            More experiment results like ablation, sensetivity and robustness are shown in our paper.
+                            More experiment results like ablation, sensitivity, and robustness are shown in our paper.
                         </div>
                     </div>
                 </div>
@@ -219,7 +213,7 @@
                 <div class="chapter">
                     <div class="text">
                     <h1>4. Analysis of Generalization</h1>
-                    According to the theory of contrastive learning, we analyze the generalization upper bound of SCLRE.The details of the proof 
+                    According to the theory of contrastive learning, we analyze the generalization upper bound of SCLRE. The details of the proof 
                     are shown in the paper and appendix. To draw a conclusion, The generalization error can be bounded by the similarity of attention 
                     vectors from the same superclass in the form of the following equation:
                     </div>
@@ -246,7 +240,7 @@
                 For convenience, we call this method SS-SCLRE. The experiment results show that SS-SCLRE can achieve better performance and alleviate performance decay.
                 <center>
                     <img class="img_responsive" src="asset/semi_line.png" alt="result" style="margin:auto;max-width:80%">
-                    <p><font size=3>Figure 4: Visualization of Representation Space.</font></p>
+                    <p><font size=3>Figure 4: Results about the Semi-Supervised Extension.</font></p>
                 </center>
 
                 The details of the extension are shown in the paper.
