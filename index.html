@@ -125,8 +125,9 @@
 							<font size=3>
                             <li>We propose the under-study but realistic problem, superclass learning.</li>
 							<li>We propose a novel representation enhancement method (SCLRE) to address superclass learning.</li>
-                            <li> We perform extensive experiments to demonstrate that SCLRE outperforms other SOTA classification techniques.</li>
-                            </font>
+                            <li>We perform extensive experiments to demonstrate that SCLRE outperforms other classification techniques.</li>
+                            <li>We conduct extensive analysis about the isotropy of superclass learning and extend SCLRE into semi-supervised situations.</li>
+                        </font>
                         </ul></p>
                         </div>
                     </div>
@@ -146,7 +147,7 @@
                             <p><font size=3>Figure 2: Overview of the process of SCLRE.</font></p>
                         </div>
                         <div class="text">
-                            SCLRE process the images in the following steps. The images first generate their representations 
+                            SCLRE processes the images in the following steps. The images first generate their representations 
                             through a convolutional neural network, then mix with each other in a trainable cross-instance 
                             attention module for enhancement. After enhancement, the representations are then adjusted according 
                             to their superclass labels and the target anchors.
@@ -170,7 +171,7 @@
 							<li>We also preset target anchors for each superclass to help the adjustment process.</li>
                             </font>
                         </ul></p>
-                        More details about the enhancement and adjustment process are shown in our paper (Sec.3).
+                        More details about the enhancement and adjustment process are shown in our paper (Sec.4).
                         </div>
                         
                     </div>
@@ -201,10 +202,10 @@
                         </center>
 
                         <div class="text">
-                            We use t-SNE to visualize the representation space of each compared mathod. The result shows that SCLRE can 
+                            We use t-SNE to visualize the representation space of each compared method. The result shows that SCLRE can 
                             effectively extract superclass-aware representations and make the boundaries of each superclass more clear.
                         
-                            More experiment results like ablation, sensetivity and robustness are shown in our paper.
+                            More experiment results like ablation, sensitivity, and robustness are shown in our paper.
                         </div>
                     </div>
                 </div>
@@ -212,7 +213,7 @@
                 <div class="chapter">
                     <div class="text">
                     <h1>4. Analysis of Generalization</h1>
-                    According to the theory of contrastive learning, we analyze the generalization upper bound of SCLRE.The details of the proof 
+                    According to the theory of contrastive learning, we analyze the generalization upper bound of SCLRE. The details of the proof 
                     are shown in the paper and appendix. To draw a conclusion, The generalization error can be bounded by the similarity of attention 
                     vectors from the same superclass in the form of the following equation:
                     </div>
